@@ -6,7 +6,6 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/bluetooth/gatt.h>
-#include <zephyr/bluetooth/hci.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_backend_ble.h>
 
@@ -26,7 +25,7 @@ static void start_adv(void)
 {
 	int err;
 
-	err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_1, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+	err = bt_le_adv_start(BT_LE_ADV_CONN_ONE_TIME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
 	if (err) {
 		LOG_ERR("Advertising failed to start (err %d)", err);
 		return;
@@ -38,7 +37,7 @@ static void start_adv(void)
 static void connected(struct bt_conn *conn, uint8_t err)
 {
 	if (err) {
-		LOG_ERR("Connection failed, err 0x%02x %s", err, bt_hci_err_to_str(err));
+		LOG_ERR("Connection failed (err 0x%02x)", err);
 	} else {
 		LOG_INF("Connected");
 	}
@@ -46,7 +45,7 @@ static void connected(struct bt_conn *conn, uint8_t err)
 
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
-	LOG_INF("Disconnected, reason 0x%02x %s", reason, bt_hci_err_to_str(reason));
+	LOG_INF("Disconnected (reason 0x%02x)", reason);
 	start_adv();
 }
 
@@ -73,9 +72,9 @@ void backend_ble_hook(bool status, void *ctx)
 	ARG_UNUSED(ctx);
 
 	if (status) {
-		LOG_INF("Bluetooth Logger Backend enabled.");
+		LOG_INF("BLE Logger Backend enabled.");
 	} else {
-		LOG_INF("Bluetooth Logger Backend disabled.");
+		LOG_INF("BLE Logger Backend disabled.");
 	}
 }
 
@@ -84,7 +83,7 @@ int main(void)
 {
 	int err;
 
-	LOG_INF("Bluetooth LOG Demo");
+	LOG_INF("BLE LOG Demo");
 	logger_backend_ble_set_hook(backend_ble_hook, NULL);
 	err = bt_enable(NULL);
 	if (err) {

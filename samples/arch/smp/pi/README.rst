@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: smp_pi
-   :name: SMP Pi
+.. _smp_pi:
 
-   Calculate the first 240 digits of Pi on multiple execution units.
+SMP Pi
+###########
 
 Overview
 ********

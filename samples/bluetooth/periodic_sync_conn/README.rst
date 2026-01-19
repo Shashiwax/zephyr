@@ -1,13 +1,12 @@
-.. zephyr:code-sample:: ble_periodic_adv_sync_conn
-   :name: Periodic Advertising Connection Procedure (Responder)
-   :relevant-api: bt_gap bluetooth
+.. _bluetooth-periodic-advertising-sync-conn-sample:
 
-   Respond to periodic advertising and establish a connection.
+Bluetooth: Periodic Advertising Connection Procedure - Responder
+#####################################################################
 
 Overview
 ********
 
-A simple application demonstrating the responder side of the Bluetooth LE
+A simple application demonstrating the responder side of the BLE
 Periodic Advertising Connection Procedure.
 
 This sample will send its address in response to the advertiser when receiving
@@ -17,7 +16,7 @@ for a new connection to be established.
 Requirements
 ************
 
-* A board with Bluetooth LE support
+* A board with BLE support
 * A controller that supports the Periodic Advertising with Responses (PAwR) - Scanner feature
 
 Building and Running
@@ -30,4 +29,4 @@ Use the sample found under :zephyr_file:`samples/bluetooth/periodic_adv_conn` on
 another board that will start periodic advertising and connect to this sample
 once synced.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

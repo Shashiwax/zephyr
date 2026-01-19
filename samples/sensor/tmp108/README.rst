@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: tmp108
-   :name: TMP108 Temperature Sensor
-   :relevant-api: sensor_interface
+.. _tmp108_sample:
 
-   Get temperature data from a TMP108 sensor (polling & trigger mode).
+TMP108 sample
+#############
 
 Description
 ***********

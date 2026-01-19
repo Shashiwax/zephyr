@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: amg88xx
-   :name: AMG88XX infrared array sensor
-   :relevant-api: sensor_interface
+.. _amg88xx:
 
-   Get temperature data from an AMG88XX 8x8 thermal camera sensor.
+AMG88XX Infrared Array Sensor
+#############################
 
 Overview
 ********

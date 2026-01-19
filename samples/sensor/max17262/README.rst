@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: max17262
-   :name: MAX17262 Fuel Gauge Sensor
-   :relevant-api: sensor_interface
+.. _max17262:
 
-   Get voltage, current and temperature data from a MAX17262 sensor (polling mode).
+MAX17262 Fuel Gauge Sensor
+###################################
 
 Overview
 ********
@@ -53,8 +52,6 @@ This example uses ``picocom`` on the serial port ``/dev/ttyUSB0``:
         V: 3.626406 V; I: -3.437500 mA; T: 28.011718 °C
 
 References
-**********
-
-.. target-notes::
+***********
 
 .. _max17262 datasheet: https://datasheets.maximintegrated.com/en/ds/MAX17262.pdf

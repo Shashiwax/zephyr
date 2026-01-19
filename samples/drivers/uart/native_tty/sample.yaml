@@ -4,6 +4,7 @@ tests:
   sample.drivers.uart.native_tty:
     build_only: true
     platform_allow:
+      - native_posix
       - native_sim
     tags:
       - serial

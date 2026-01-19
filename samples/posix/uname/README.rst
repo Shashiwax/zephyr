@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: posix-uname
-   :name: uname()
+.. _posix-uname-sample:
 
-   Use ``uname()`` to acquire system information and output it to the console.
+POSIX uname()
+#############
 
 Overview
 ********

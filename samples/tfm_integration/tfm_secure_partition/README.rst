@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: tfm_secure_partition
-   :name: TF-M Secure Partition
+.. _tfm_secure_partition:
 
-   Create a secure partition that exposes secure services.
+TF-M Secure Partition Sample
+############################
 
 Overview
 ********
@@ -38,12 +38,12 @@ This sample can be built with or without CONFIG_TFM_IPC, since it contains code 
 On Target
 =========
 
-Refer to :zephyr:code-sample:`tfm_ipc` for detailed instructions.
+Refer to :ref:`tfm_ipc` for detailed instructions.
 
 On QEMU
 =======
 
-Refer to :zephyr:code-sample:`tfm_ipc` for detailed instructions.
+Refer to :ref:`tfm_ipc` for detailed instructions.
 
 Sample Output
 =============

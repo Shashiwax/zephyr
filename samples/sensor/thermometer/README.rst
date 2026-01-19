@@ -1,9 +1,7 @@
-.. zephyr:code-sample:: thermometer
-   :name: Thermometer
-   :relevant-api: sensor_interface
+.. _thermometer-sample:
 
-   Get ambient temperature data from a temperature sensor and get alerts when temperature drifts
-   above a threshold. (polling & trigger mode).
+Thermometer sample
+##################
 
 Overview
 ********

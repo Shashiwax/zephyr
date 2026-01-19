@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: nanopb
-   :name: Nanopb
+.. _nanopb_sample:
 
-   Serialize and deserialize structured data using the nanopb module.
+Nanopb sample
+#############
 
 Overview
 ********

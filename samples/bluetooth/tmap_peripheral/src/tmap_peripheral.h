@@ -4,9 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <stdint.h>
-
-#include <zephyr/bluetooth/conn.h>
+#include <zephyr/types.h>
 
 #if defined(CONFIG_BT_ASCS_ASE_SNK)
 #define AVAILABLE_SINK_CONTEXT                                                                     \

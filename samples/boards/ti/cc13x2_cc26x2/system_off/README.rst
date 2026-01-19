@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: ti_cc13x2_cc26x2_system_off
-   :name: CC13x2/CC26x2 System Off
+.. _ti-cc13x2_cc26x2-system-off-sample:
 
-   Exercise the various sleep modes on TI CC13x2/CC26x2 platforms.
+cc13x2_cc26x2 System Off demo
+#############################
 
 Overview
 ********

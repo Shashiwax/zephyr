@@ -1,13 +1,13 @@
 .. zephyr:code-sample:: bluetooth_public_broadcast_source
-   :name: Public Broadcast Profile (PBP) Public Broadcast Source
-   :relevant-api: bluetooth bt_audio bt_bap bt_pbp
+   :name: Bluetooth: Public Broadcast Source
+   :relevant-api: bluetooth
 
-   Use PBP Public Broadcast Source functionality.
+   Bluetooth: Public Broadcast Source
 
 Overview
 ********
 
-Application demonstrating the PBP Public Broadcast Source functionality.
+Application demonstrating the LE Public Broadcast Profile source functionality.
 Will start advertising extended advertising and includes a Broadcast Audio Announcement.
 The advertised broadcast audio stream quality will cycle between high and standard quality
 every 15 seconds.
@@ -15,7 +15,7 @@ every 15 seconds.
 This sample can be found under
 :zephyr_file:`samples/bluetooth/pbp_public_broadcast_source` in the Zephyr tree.
 
-Check the :zephyr:code-sample-category:`bluetooth` samples for general information.
+Check the :ref:`bluetooth samples section <bluetooth-samples>` for general information.
 
 Requirements
 ************
@@ -27,7 +27,7 @@ Building and Running
 ********************
 
 When building targeting an nrf52 series board with the Zephyr Bluetooth Controller,
-use ``-DEXTRA_CONF_FILE=overlay-bt_ll_sw_split.conf`` to enable the required ISO
+use `-DOVERLAY_CONFIG=overlay-bt_ll_sw_split.conf` to enable the required ISO
 feature support.
 
 Building for an nrf5340dk
@@ -50,7 +50,7 @@ If you prefer to only build the application core image, you can do so by doing i
    :goals: build
 
 In that case you can pair this application core image with the
-:zephyr:code-sample:`bluetooth_hci_ipc` sample
+:ref:`hci_ipc sample <bluetooth-hci-ipc-sample>`
 :zephyr_file:`samples/bluetooth/hci_ipc/nrf5340_cpunet_iso-bt_ll_sw_split.conf` configuration.
 
 Building for a simulated nrf5340bsim
@@ -64,7 +64,7 @@ Similarly to how you would for real HW, you can do:
    :goals: build
    :west-args: --sysbuild
 
-Note this will produce a Linux executable in :file:`./build/zephyr/zephyr.exe`.
+Note this will produce a Linux executable in `./build/zephyr/zephyr.exe`.
 For more information, check :ref:`this board documentation <nrf5340bsim>`.
 
 Building for a simulated nrf52_bsim
@@ -74,4 +74,4 @@ Building for a simulated nrf52_bsim
    :zephyr-app: samples/bluetooth/pbp_public_broadcast_source/
    :board: nrf52_bsim
    :goals: build
-   :gen-args: -DEXTRA_CONF_FILE=overlay-bt_ll_sw_split.conf
+   :gen-args: -DOVERLAY_CONFIG=overlay-bt_ll_sw_split.conf

@@ -8,16 +8,13 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-
-#include <zephyr/bluetooth/audio/aics.h>
-#include <zephyr/bluetooth/conn.h>
-#include <zephyr/bluetooth/audio/micp.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
-#include <zephyr/sys/util.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <zephyr/bluetooth/conn.h>
+#include <zephyr/bluetooth/audio/micp.h>
 
 static void micp_mic_dev_mute_cb(uint8_t mute)
 {

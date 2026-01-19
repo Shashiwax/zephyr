@@ -6,5 +6,4 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(sockets_txtime)
 
 target_sources(app PRIVATE src/main.c)
-
-include(${ZEPHYR_BASE}/samples/net/common/common.cmake)
+target_sources_ifdef(CONFIG_NET_VLAN app PRIVATE src/vlan.c)

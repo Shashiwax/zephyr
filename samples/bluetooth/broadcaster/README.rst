@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: bluetooth_broadcaster
-   :name: Broadcaster
-   :relevant-api: bluetooth
+.. _bluetooth-broadcaster-sample:
 
-   Periodically send out advertising packets with a manufacturer data element.
+Bluetooth: Broadcaster
+###########################
 
 Overview
 ********
@@ -17,7 +16,7 @@ Requirements
 ************
 
 * BlueZ running on the host, or
-* A board with Bluetooth LE support
+* A board with BLE support
 
 Building and Running
 ********************
@@ -25,4 +24,4 @@ Building and Running
 This sample can be found under :zephyr_file:`samples/bluetooth/broadcaster` in the
 Zephyr tree.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

@@ -22,7 +22,7 @@ This sample requires the support of a timer IP compatible with alarm setting.
 References
 **********
 
-- :zephyr:board:`disco_l475_iot1`
+- :ref:`disco_l475_iot1_board`
 
 Building and Running
 ********************

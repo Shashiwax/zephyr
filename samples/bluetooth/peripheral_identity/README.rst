@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: ble_peripheral_identity
-   :name: Peripheral Identity
-   :relevant-api: bluetooth
+.. _peripheral_identity:
 
-   Use multiple identities to allow connections from multiple central devices.
+Bluetooth: Peripheral Identity
+##############################
 
 Overview
 ********
@@ -14,7 +13,7 @@ Requirements
 ************
 
 * BlueZ running on the host, or
-* A board with Bluetooth LE support
+* A board with BLE support
 
 Building and Running
 ********************
@@ -22,4 +21,4 @@ Building and Running
 This sample can be found under :zephyr_file:`samples/bluetooth/peripheral_identity`
 in the Zephyr tree.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

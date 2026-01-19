@@ -3,8 +3,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-#include <stddef.h>
-#include <stdint.h>
+
+#include <zephyr/kernel.h>
+#include <zephyr/sys/byteorder.h>
+#include <zephyr/sys/printk.h>
 
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/bluetooth/byteorder.h>
@@ -13,15 +15,7 @@
 #include <zephyr/bluetooth/audio/bap.h>
 #include <zephyr/bluetooth/audio/pacs.h>
 #include <zephyr/bluetooth/audio/csip.h>
-#include <zephyr/bluetooth/gap.h>
 #include <zephyr/bluetooth/services/ias.h>
-#include <zephyr/bluetooth/uuid.h>
-#include <zephyr/kernel.h>
-#include <zephyr/sys/__assert.h>
-#include <zephyr/sys/byteorder.h>
-#include <zephyr/sys/printk.h>
-#include <zephyr/sys/util.h>
-#include <zephyr/sys/util_macro.h>
 
 #include "hap_ha.h"
 
@@ -107,7 +101,7 @@ static void adv_work_handler(struct k_work *work)
 
 	if (ext_adv == NULL) {
 		/* Create a connectable advertising set */
-		err = bt_le_ext_adv_create(BT_BAP_ADV_PARAM_CONN_QUICK, &adv_cb, &ext_adv);
+		err = bt_le_ext_adv_create(BT_LE_EXT_ADV_CONN, &adv_cb, &ext_adv);
 		if (err) {
 			printk("Failed to create advertising set (err %d)\n", err);
 		}

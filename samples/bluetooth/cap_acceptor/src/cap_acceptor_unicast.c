@@ -26,7 +26,7 @@
 #include <zephyr/kernel/thread_stack.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_core.h>
-#include <zephyr/net_buf.h>
+#include <zephyr/net/buf.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/sys/util_macro.h>
 
@@ -41,10 +41,9 @@ LOG_MODULE_REGISTER(cap_acceptor_unicast, LOG_LEVEL_INF);
 #define LATENCY            20U
 #define RTN                2U
 
-static const struct bt_bap_qos_cfg_pref qos_pref = BT_BAP_QOS_CFG_PREF(
+static const struct bt_audio_codec_qos_pref qos_pref = BT_AUDIO_CODEC_QOS_PREF(
 	UNFRAMED_SUPPORTED, PREF_PHY, RTN, LATENCY, MIN_PD, MAX_PD, MIN_PD, MAX_PD);
-uint64_t total_unicast_rx_iso_packet_count; /* This value is exposed to test code */
-uint64_t total_unicast_tx_iso_packet_count; /* This value is exposed to test code */
+uint64_t total_rx_iso_packet_count; /* This value is exposed to test code */
 
 static bool log_codec_cfg_cb(struct bt_data *data, void *user_data)
 {
@@ -99,7 +98,7 @@ static void log_codec_cfg(const struct bt_audio_codec_cfg *codec_cfg)
 	bt_audio_data_parse(codec_cfg->meta, codec_cfg->meta_len, log_codec_cfg_cb, "meta");
 }
 
-static void log_qos(const struct bt_bap_qos_cfg *qos)
+static void log_qos(const struct bt_audio_codec_qos *qos)
 {
 	LOG_INF("QoS: interval %u framing 0x%02x phy 0x%02x sdu %u rtn %u latency %u pd %u",
 		qos->interval, qos->framing, qos->phy, qos->sdu, qos->rtn, qos->latency, qos->pd);
@@ -109,7 +108,7 @@ static int unicast_server_config_cb(struct bt_conn *conn, const struct bt_bap_ep
 				    enum bt_audio_dir dir,
 				    const struct bt_audio_codec_cfg *codec_cfg,
 				    struct bt_bap_stream **bap_stream,
-				    struct bt_bap_qos_cfg_pref *const pref,
+				    struct bt_audio_codec_qos_pref *const pref,
 				    struct bt_bap_ascs_rsp *rsp)
 {
 	struct bt_cap_stream *cap_stream;
@@ -137,7 +136,7 @@ static int unicast_server_config_cb(struct bt_conn *conn, const struct bt_bap_ep
 
 static int unicast_server_reconfig_cb(struct bt_bap_stream *bap_stream, enum bt_audio_dir dir,
 				      const struct bt_audio_codec_cfg *codec_cfg,
-				      struct bt_bap_qos_cfg_pref *const pref,
+				      struct bt_audio_codec_qos_pref *const pref,
 				      struct bt_bap_ascs_rsp *rsp)
 {
 	LOG_INF("ASE Codec Reconfig: bap_stream %p", bap_stream);
@@ -147,8 +146,8 @@ static int unicast_server_reconfig_cb(struct bt_bap_stream *bap_stream, enum bt_
 	return 0;
 }
 
-static int unicast_server_qos_cb(struct bt_bap_stream *bap_stream, const struct bt_bap_qos_cfg *qos,
-				 struct bt_bap_ascs_rsp *rsp)
+static int unicast_server_qos_cb(struct bt_bap_stream *bap_stream,
+				 const struct bt_audio_codec_qos *qos, struct bt_bap_ascs_rsp *rsp)
 {
 	LOG_INF("QoS: bap_stream %p qos %p", bap_stream, qos);
 
@@ -249,7 +248,7 @@ static const struct bt_bap_unicast_server_cb unicast_server_cb = {
 };
 
 static void unicast_stream_configured_cb(struct bt_bap_stream *bap_stream,
-					 const struct bt_bap_qos_cfg_pref *pref)
+					 const struct bt_audio_codec_qos_pref *pref)
 {
 	LOG_INF("Configured bap_stream %p", bap_stream);
 
@@ -296,7 +295,7 @@ static void unicast_stream_enabled_cb(struct bt_bap_stream *bap_stream)
 static void unicast_stream_started_cb(struct bt_bap_stream *bap_stream)
 {
 	LOG_INF("Started bap_stream %p", bap_stream);
-	total_unicast_rx_iso_packet_count = 0U;
+	total_rx_iso_packet_count = 0U;
 }
 
 static void unicast_stream_metadata_updated_cb(struct bt_bap_stream *bap_stream)
@@ -332,22 +331,11 @@ static void unicast_stream_recv_cb(struct bt_bap_stream *bap_stream,
 	 * (see the `info->flags` for which flags to check),
 	 */
 
-	if ((total_unicast_rx_iso_packet_count % 100U) == 0U) {
-		LOG_INF("Received %llu HCI ISO data packets", total_unicast_rx_iso_packet_count);
+	if ((total_rx_iso_packet_count % 100U) == 0U) {
+		LOG_INF("Received %llu HCI ISO data packets", total_rx_iso_packet_count);
 	}
 
-	total_unicast_rx_iso_packet_count++;
-}
-
-static void unicast_stream_sent_cb(struct bt_bap_stream *stream)
-{
-	/* Triggered every time we have sent an HCI data packet to the controller */
-
-	if ((total_unicast_tx_iso_packet_count % 100U) == 0U) {
-		LOG_INF("Sent %llu HCI ISO data packets", total_unicast_tx_iso_packet_count);
-	}
-
-	total_unicast_tx_iso_packet_count++;
+	total_rx_iso_packet_count++;
 }
 
 static void tx_thread_func(void *arg1, void *arg2, void *arg3)
@@ -409,23 +397,11 @@ int init_cap_acceptor_unicast(struct peer_config *peer)
 		.stopped = unicast_stream_stopped_cb,
 		.released = unicast_stream_released_cb,
 		.recv = unicast_stream_recv_cb,
-		.sent = unicast_stream_sent_cb,
 	};
 	static bool cbs_registered;
 
 	if (!cbs_registered) {
 		int err;
-		struct bt_bap_unicast_server_register_param param = {
-			CONFIG_BT_ASCS_MAX_ASE_SNK_COUNT,
-			CONFIG_BT_ASCS_MAX_ASE_SRC_COUNT
-		};
-
-		err = bt_bap_unicast_server_register(&param);
-		if (err != 0) {
-			LOG_ERR("Failed to register BAP unicast server: %d", err);
-
-			return -ENOEXEC;
-		}
 
 		err = bt_bap_unicast_server_register_cb(&unicast_server_cb);
 		if (err != 0) {
@@ -455,9 +431,6 @@ int init_cap_acceptor_unicast(struct peer_config *peer)
 			thread_started = true;
 		}
 	}
-
-	k_sem_init(&peer->source_stream_sem, 0, 1);
-	k_sem_init(&peer->sink_stream_sem, 0, 1);
 
 	return 0;
 }

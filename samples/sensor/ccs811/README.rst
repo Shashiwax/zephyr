@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: ccs811
-   :name: CCS811 indoor air quality sensor
-   :relevant-api: sensor_interface
+.. _ccs811:
 
-   Get CO2 equivalent and VOC data from a CCS811 sensor.
+CCS811 Indoor Air Quality Sensor
+################################
 
 Overview
 ********

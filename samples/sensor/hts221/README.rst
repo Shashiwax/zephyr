@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: hts221
-   :name: HTS221 Temperature and Humidity Monitor
-   :relevant-api: sensor_interface
+.. _hts221:
 
-   Get temperature and humidity data from an HTS221 sensor (polling & trigger mode).
+HTS221: Temperature and Humidity Monitor
+########################################
 
 Overview
 ********

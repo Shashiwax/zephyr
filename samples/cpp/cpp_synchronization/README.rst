@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: cpp_synchronization
-   :name: C++ synchronization
+.. _cpp_synchronization:
 
-   Use Zephyr synchronization primitives from C++ code.
+C++ Synchronization
+###################
 
 Overview
 ********

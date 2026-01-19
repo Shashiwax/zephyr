@@ -1,10 +1,7 @@
-.. zephyr:code-sample:: thrift-hello
-   :name: Apache Thrift Hello World
+.. _thrift-hello-sample:
 
-   Implement a simple Apache Thrift client-server application.
-
-Overview
-********
+Thrift sample
+#############
 
 .. figure:: thrift-layers.png
    :align: center

@@ -1,13 +1,12 @@
-.. zephyr:code-sample:: ble_peripheral_sc_only
-   :name: Peripheral SC-only
-   :relevant-api: bt_conn bluetooth
+.. _peripheral_sc_only:
 
-   Enable "Secure Connections Only" mode for a Bluetooth LE peripheral.
+Bluetooth: Peripheral SC-only
+#############################
 
 Overview
 ********
 
-Similar to the :zephyr:code-sample:`ble_peripheral` sample, except that this
+Similar to the :ref:`Peripheral <ble_peripheral>` sample, except that this
 application enables the Secure Connections Only mode, i.e. will only
 accept connections that are secured using security level 4 (FIPS).
 
@@ -16,7 +15,7 @@ Requirements
 ************
 
 * BlueZ running on the host, or
-* A board with Bluetooth LE support
+* A board with BLE support
 
 Building and Running
 ********************
@@ -24,4 +23,4 @@ Building and Running
 This sample can be found under :zephyr_file:`samples/bluetooth/peripheral_sc_only`
 in the Zephyr tree.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

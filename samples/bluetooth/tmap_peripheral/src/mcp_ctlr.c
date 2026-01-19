@@ -2,20 +2,16 @@
  *  @brief Bluetooth Media Control Profile (MCP) Controller role.
  *
  *  Copyright 2023 NXP
- *  Copyright (c) 2024 Nordic Semiconductor ASA
  *
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-#include <errno.h>
-#include <stddef.h>
-#include <stdint.h>
-
-#include <zephyr/bluetooth/audio/mcc.h>
-#include <zephyr/bluetooth/audio/media_proxy.h>
-#include <zephyr/bluetooth/conn.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
+
+#include <zephyr/bluetooth/conn.h>
+#include <zephyr/bluetooth/audio/mcc.h>
+#include <zephyr/bluetooth/audio/media_proxy.h>
 
 static struct bt_conn *default_conn;
 

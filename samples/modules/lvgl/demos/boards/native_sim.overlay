@@ -3,9 +3,4 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-
-&sdl_dc {
-	compatible = "zephyr,sdl-dc";
-	height = <272>;
-	width = <480>;
-};
+#include "native_posix.overlay"

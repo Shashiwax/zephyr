@@ -62,7 +62,7 @@ static void create_accelerometer_chart(lv_obj_t *parent)
 	lv_chart_set_point_count(chart1, CONFIG_SAMPLE_CHART_POINTS_PER_SERIES);
 
 	/* Do not display point markers on the data */
-	lv_obj_set_style_size(chart1, 0, 0, LV_PART_INDICATOR);
+	lv_obj_set_style_size(chart1, 0, LV_PART_INDICATOR);
 }
 
 int main(void)
@@ -81,17 +81,15 @@ int main(void)
 		return -ENODEV;
 	}
 
-	create_accelerometer_chart(lv_screen_active());
+	create_accelerometer_chart(lv_scr_act());
 	sensor_timer = lv_timer_create(sensor_timer_cb,
 					1000 / CONFIG_SAMPLE_ACCEL_SAMPLING_RATE,
 					NULL);
-	lv_timer_handler();
+	lv_task_handler();
 	display_blanking_off(display_dev);
 
 	while (1) {
-		uint32_t sleep_ms = lv_timer_handler();
-
-		k_msleep(MIN(sleep_ms, INT32_MAX));
+		k_msleep(lv_task_handler());
 	}
 
 	return 0;

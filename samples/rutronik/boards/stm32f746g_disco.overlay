@@ -1,0 +1,28 @@
+/* boards/stm32f746g_disco.overlay */
+
+/ {
+    zephyr,user {
+        epson-msgrdy-gpios = <&gpiob 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* D3 */
+        epson-stby-gpios   = <&gpiog 6 GPIO_ACTIVE_HIGH>; /* D1 */
+        epson-reset-gpios  = <&gpioh 6 GPIO_ACTIVE_LOW>;  /* D6 */
+        epson-mute-gpios   = <&gpiof 10 GPIO_ACTIVE_LOW>; /* A1 */
+        
+        /* MOVED HERE: We define CS as a GPIO so we can control it manually in C config */
+        epson-cs-gpios     = <&gpiog 7 GPIO_ACTIVE_LOW>;  /* D4 */
+    };
+};
+
+/* Disable conflicting peripherals */
+&fmc { status = "disabled"; };
+&ltdc { status = "disabled"; };
+&timers3 { status = "disabled"; };
+
+
+/* Enable SPI2 directly */
+&spi2 {
+    status = "okay";
+    pinctrl-names = "default";
+	/*cs-gpios = <&gpioa 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;*/
+	status = "okay";
+    /* We don't need to set pinctrl here, the board default already maps it to D11/D12/D13 */
+};

@@ -1,13 +1,11 @@
-.. zephyr:code-sample:: lsmd6dso
-   :name: LSM6DSO IMU sensor
-   :relevant-api: sensor_interface
+.. _lsm6dso:
 
-   Get accelerometer and gyroscope data from an LSM6DSO sensor (polling & trigger
-   mode).
+LSM6DSO: IMU Sensor Monitor
+###########################
 
 Overview
 ********
-This sample sets the data rate of the LSM6DSO accelerometer and gyroscope to
+This sample sets the date rate of LSM6DSO accelerometer and gyroscope to
 12.5Hz and enables a trigger on data ready. It displays on the console
 the values for accelerometer and gyroscope.
 
@@ -15,7 +13,7 @@ Requirements
 ************
 
 This sample uses the LSM6DSO sensor controlled using the I2C interface.
-It has been tested on the :zephyr:board:`stm32l562e_dk`.
+It has been tested on the :ref:`stm32l562e_dk_board`.
 
 References
 **********
@@ -26,7 +24,7 @@ Building and Running
 ********************
 
  This project outputs sensor data to the console. It requires an LSM6DSO
- sensor, which is present on the :zephyr:board:`stm32l562e_dk`.
+ sensor, which is present on the :ref:`stm32l562e_dk_board`.
 
 Building on stm32l562e_dk board
 ===============================

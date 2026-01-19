@@ -9,5 +9,4 @@ tests:
       - drivers
       - gnss
     filter: dt_alias_exists("gnss")
-    integration_platforms:
-      - mimxrt1062_fmurt6
+    depends_on: gnss

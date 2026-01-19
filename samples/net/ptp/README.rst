@@ -1,6 +1,6 @@
 .. zephyr:code-sample:: ptp
    :name: PTP
-   :relevant-api: ptp
+   :relevant-api: ptp ptp_time ptp_clock
 
    Enable PTP support and monitor messages and events via logging.
 

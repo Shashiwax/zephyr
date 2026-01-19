@@ -1,9 +1,7 @@
-.. zephyr:code-sample:: icm42605
-   :name: MPU6050 Invensense Motion Tracking Device
-   :relevant-api: sensor_interface
+.. _icm42605:
 
-   Get temperature, acceleration, and angular velocity from an ICM42605 sensor (polling & trigger
-   mode).
+MPU6050: Invensense Motion Tracking Device
+##########################################
 
 Description
 ***********

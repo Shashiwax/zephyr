@@ -30,8 +30,6 @@ static struct k_thread tthread[THREADS_NUM];
 static char th_buffer[THREADS_NUM][DIGITS_NUM + 1];
 static atomic_t th_counter = THREADS_NUM;
 
-K_SEM_DEFINE(main_sem, 0, 1);
-
 void test_thread(void *arg1, void *arg2, void *arg3)
 {
 	atomic_t *counter = (atomic_t *)arg1;
@@ -76,9 +74,7 @@ void test_thread(void *arg1, void *arg2, void *arg3)
 		buffer += 4;
 	}
 
-	if (atomic_dec(counter) == 1) {
-		k_sem_give(&main_sem);
-	}
+	atomic_dec(counter);
 }
 
 int main(void)
@@ -100,7 +96,9 @@ int main(void)
 	}
 
 	/* Wait for all workers to finish their calculations */
-	k_sem_take(&main_sem, K_FOREVER);
+	while (th_counter) {
+		k_sleep(K_MSEC(1));
+	}
 
 	/* Capture final time stamp */
 	stop_time = k_cycle_get_32();

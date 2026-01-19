@@ -51,15 +51,13 @@ struct kb_event {
 
 K_MSGQ_DEFINE(kb_msgq, sizeof(struct kb_event), 2, 1);
 
-UDC_STATIC_BUF_DEFINE(report, KB_REPORT_COUNT);
+static uint8_t __aligned(sizeof(void *)) report[KB_REPORT_COUNT];
 static uint32_t kb_duration;
 static bool kb_ready;
 
-static void input_cb(struct input_event *evt, void *user_data)
+static void input_cb(struct input_event *evt)
 {
 	struct kb_event kb_evt;
-
-	ARG_UNUSED(user_data);
 
 	kb_evt.code = evt->code;
 	kb_evt.value = evt->value;
@@ -68,7 +66,7 @@ static void input_cb(struct input_event *evt, void *user_data)
 	}
 }
 
-INPUT_CALLBACK_DEFINE(NULL, input_cb, NULL);
+INPUT_CALLBACK_DEFINE(NULL, input_cb);
 
 static void kb_iface_ready(const struct device *dev, const bool ready)
 {
@@ -148,10 +146,6 @@ static void msg_cb(struct usbd_context *const usbd_ctx,
 		   const struct usbd_msg *const msg)
 {
 	LOG_INF("USBD message: %s", usbd_msg_type_string(msg->type));
-
-	if (msg->type == USBD_MSG_CONFIGURATION) {
-		LOG_INF("\tConfiguration value %d", msg->status);
-	}
 
 	if (usbd_can_detect_vbus(usbd_ctx)) {
 		if (msg->type == USBD_MSG_VBUS_READY) {
@@ -279,18 +273,7 @@ int main(void)
 			continue;
 		}
 
-		if (usbd_is_suspended(sample_usbd)) {
-			/* on a press of any button, send wakeup request */
-			if (kb_evt.value) {
-				ret = usbd_wakeup_request(sample_usbd);
-				if (ret) {
-					LOG_ERR("Remote wakeup error, %d", ret);
-				}
-			}
-			continue;
-		}
-
-		ret = hid_device_submit_report(hid_dev, KB_REPORT_COUNT, report);
+		ret = hid_device_submit_report(hid_dev, sizeof(report), report);
 		if (ret) {
 			LOG_ERR("HID submit report error, %d", ret);
 		}

@@ -1,0 +1,15 @@
+# Private config options for charger sample app
+
+# Copyright (c) 2024 Cirrus Logic, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "Audio application"
+
+source "Kconfig.zephyr"
+
+# Define the symbol here locally so prj.conf is happy
+config EPSON_S1V3G340
+    bool "Epson Driver Switch"
+    default y
+    help
+      This switch allows the code in spi_api.c to compile.

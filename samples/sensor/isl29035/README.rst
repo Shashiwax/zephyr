@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: isl29035
-   :name: ISL29035 Digital Light Sensor
-   :relevant-api: sensor_interface
+.. _isl29035:
 
-   Get light intensity data from an ISL29035 sensor (polling & trigger mode).
+ISL29035: Digital Light Sensor
+##############################
 
 Overview
 ********

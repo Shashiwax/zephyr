@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: accel_polling
-   :name: Generic 3-Axis accelerometer polling
-   :relevant-api: sensor_interface
+.. _accel_polling:
 
-   Get 3-Axis accelerometer data from a sensor (polling mode).
+Generic 3-Axis accelerometer polling sample
+###########################################
 
 Overview
 ********

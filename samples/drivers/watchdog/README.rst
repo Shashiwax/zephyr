@@ -25,7 +25,7 @@ Building and Running for ST Nucleo F091RC
 =========================================
 
 The sample can be built and executed for the
-:zephyr:board:`nucleo_f091rc` as follows:
+:ref:`nucleo_f091rc_board` as follows:
 
 .. zephyr-app-commands::
 	:zephyr-app: samples/drivers/watchdog

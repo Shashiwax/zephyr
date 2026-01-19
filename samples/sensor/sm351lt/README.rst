@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: sm351lt
-   :name: SM351LT Magnetoresistive Sensor
-   :relevant-api: sensor_interface
+.. _sm351lt:
 
-   Detect a magnet's presence using the SM351LT magnetoresistive sensor (polling & trigger mode).
+SM351LT: Magnetoresistive Sensor Example
+########################################
 
 Overview
 ********
@@ -26,12 +25,12 @@ Building and Running
 
 The SM351LT (or compatible) sensors are available on the following boards:
 
-* :zephyr:board:`bt510`
+* :ref:`bt510`
 
 Building on bt510
 ==================
 
-:zephyr:board:`bt510` includes a Honeywell SM351LT magnetoresistive sensor.
+:ref:`bt510` includes a Honeywell SM351LT magnetoresistive sensor.
 
 .. zephyr-app-commands::
    :zephyr-app: samples/sensor/sm351lt

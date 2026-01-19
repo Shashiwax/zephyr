@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: posix-env
-   :name: Environment Variables
+.. _posix-env-sample:
 
-   Manipulate environment variables from a Zephyr application.
+POSIX Environment Variables
+###########################
 
 Overview
 ********

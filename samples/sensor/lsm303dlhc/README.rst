@@ -1,9 +1,7 @@
-.. zephyr:code-sample:: lsmd303dlhc
-   :name: LSM303DLHC Magnetometer and Accelerometer sensor
-   :relevant-api: sensor_interface
+.. _lsm303dlhc:
 
-   Get magnetometer and accelerometer data from an LSM303DLHC sensor (polling
-   mode).
+LSM303DLHC: Magnetometer and Accelerometer data Monitor
+#######################################################
 
 Overview
 ********

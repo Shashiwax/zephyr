@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: with_mcuboot
-   :name: MCUboot with sysbuild
+.. _with_mcuboot:
 
-   Build a Zephyr application + MCUboot using sysbuild.
+Sample with MCUboot
+###################
 
 Overview
 ********
@@ -19,7 +19,7 @@ sysbuild.
 This is achieved with a sysbuild specific Kconfig configuration,
 :file:`sysbuild.conf`.
 
-The ``SB_CONFIG_BOOTLOADER_MCUBOOT=y`` setting in the sysbuild Kconfig file
+The `SB_CONFIG_BOOTLOADER_MCUBOOT=y` setting in the sysbuild Kconfig file
 enables the bootloader when building with sysbuild.
 
 The :file:`sysbuild/mcuboot.conf` file will be used as an extra fragment that
@@ -32,7 +32,7 @@ To build both the sample and MCUboot with ``west`` for the ``reel_board``, run:
 
 .. zephyr-app-commands::
    :tool: west
-   :zephyr-app: samples/sysbuild/with_mcuboot
+   :app: samples/application_development/sysbuild/with_mcuboot
    :board: reel_board
    :goals: build
    :west-args: --sysbuild

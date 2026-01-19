@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: fdc2x1x
-   :name: FDC2X1X Capacitance-to-Digital Converter
-   :relevant-api: sensor_interface
+.. _fdc2x1x:
 
-   Get capacitance and frequency data from a FDC2X1X sensor (polling & trigger).
+FDC2X1X: Capacitance-to-Digital Converter
+#########################################
 
 Overview
 ********

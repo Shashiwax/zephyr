@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: tflite-magicwand
-   :name: Magic Wand
+.. _tensorflow_magic_wand:
 
-   Recognize gestures from an accelerometer using TensorFlow Lite for Microcontrollers and a 20KB
-   neural network.
+TensorFlow Lite Micro Magic Wand sample
+#######################################
 
 Overview
 ********
@@ -32,7 +31,7 @@ Add the tflite-micro module to your West manifest and pull it:
     west config manifest.project-filter -- +tflite-micro
     west update
 
-The application can be built for the :zephyr:board:`litex_vexriscv` for
+The application can be built for the :ref:`litex-vexriscv` for
 emulation in Renode as follows:
 
 .. zephyr-app-commands::

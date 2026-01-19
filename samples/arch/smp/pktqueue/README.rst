@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: smp_pktqueue
-   :name: SMP pktqueue
+.. _smp_pktqueue:
 
-   Use SMP to process multiple packet headers in parallel.
+SMP pktqueue
+############
 
 Overview
 ********

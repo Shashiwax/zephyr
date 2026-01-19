@@ -1,13 +1,9 @@
 /*
  * Copyright 2023 NXP
- * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <stdint.h>
-
-#include <zephyr/bluetooth/conn.h>
 #include <zephyr/types.h>
 
 /**
@@ -18,11 +14,11 @@
 int mcp_server_init(void);
 
 /**
- * @brief Initialize the CCP Call Control Server role
+ * @brief Initialize the CCP Server role
  *
  * @return 0 if success, errno on failure.
  */
-int ccp_call_control_server_init(void);
+int ccp_server_init(void);
 
 /**
  * @brief Initialize the VCP Volume Controller role

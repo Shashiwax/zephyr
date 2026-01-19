@@ -34,18 +34,11 @@ static struct bt_data ad[] = {
 	BT_DATA(BT_DATA_SVC_DATA16, service_data, ARRAY_SIZE(service_data))
 };
 
-int main(void)
+static void bt_ready(int err)
 {
-	int err;
-	int temp = 0;
-
-	printk("Starting BTHome sensor template\n");
-
-	/* Initialize the Bluetooth Subsystem */
-	err = bt_enable(NULL);
 	if (err) {
 		printk("Bluetooth init failed (err %d)\n", err);
-		return 0;
+		return;
 	}
 
 	printk("Bluetooth initialized\n");
@@ -54,6 +47,21 @@ int main(void)
 	err = bt_le_adv_start(ADV_PARAM, ad, ARRAY_SIZE(ad), NULL, 0);
 	if (err) {
 		printk("Advertising failed to start (err %d)\n", err);
+		return;
+	}
+}
+
+int main(void)
+{
+	int err;
+	int temp = 0;
+
+	printk("Starting BTHome sensor template\n");
+
+	/* Initialize the Bluetooth Subsystem */
+	err = bt_enable(bt_ready);
+	if (err) {
+		printk("Bluetooth init failed (err %d)\n", err);
 		return 0;
 	}
 

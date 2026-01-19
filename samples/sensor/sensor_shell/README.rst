@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: sensor_shell
-   :name: Sensor shell
-   :relevant-api: sensor_interface
+.. _sensor_shell_sample:
 
-   Interact with sensors using the shell module.
+Sensor Shell Module Sample
+##########################
 
 Overview
 ********
@@ -19,14 +18,13 @@ enabled, for example:
    :board: reel_board
    :goals: build flash
 
-For boards that do not have a sensor, a simple fake sensor driver is provided and can enabled by
-adding the following overlay:
+For boards that do not have a sensor, a simple fake sensor driver is provided, for example:
 
 .. zephyr-app-commands::
    :zephyr-app: samples/sensor/sensor_shell
    :board: qemu_riscv64
    :goals: run
-   :gen-args: -DEXTRA_DTC_OVERLAY_FILE=fake_sensor.overlay
+   :gen-args: -DCONFIG_SAMPLES_SENSOR_SHELL_FAKE_SENSOR=y
 
 Shell Module Command Help
 =========================

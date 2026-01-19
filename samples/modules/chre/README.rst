@@ -1,10 +1,5 @@
-.. zephyr:code-sample:: chre
-   :name: Android's Context Hub Runtime Environment (CHRE)
-
-   Run nanoapps on Zephyr using the Context Hub Runtime Environment (CHRE).
-
-Overview
-========
+Android's Context Hub Runtime Environment (CHRE)
+################################################
 
 Android's context hub enables the use of nanoapps. A single nanoapp has 3 entry points seen in
 `chre_api/chre/nanoapp.h`_:

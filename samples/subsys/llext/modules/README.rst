@@ -1,6 +1,6 @@
 .. zephyr:code-sample:: llext-modules
    :name: Linkable loadable extensions "module" sample
-   :relevant-api: llext_apis
+   :relevant-api: llext
 
     Call a function in a loadable extension module,
     either built-in or loaded at runtime.
@@ -30,19 +30,20 @@ Requirements
 ************
 
 A board with a supported llext architecture and console. This can also be
-executed in QEMU emulation on the :zephyr:board:`qemu_xtensa <qemu_xtensa>` or
-:zephyr:board:`qemu_cortex_r5 <qemu_cortex_r5>` virtual boards.
+executed in QEMU emulation on the :ref:`qemu_xtensa <qemu_xtensa>` or
+:ref:`qemu_cortex_r5 <qemu_cortex_r5>` virtual boards.
 
 Building and running
 ********************
 
-- By default, the sample will compile the function along with the rest of
-  Zephyr in the same binary. This can be verified via the following commands:
+- The following commands build and run the sample so that the files are linked
+  together in the same binary:
 
   .. zephyr-app-commands::
      :zephyr-app: samples/subsys/llext/modules
-     :board: qemu_xtensa/dc233c
+     :board: qemu_xtensa
      :goals: build run
+     :west-args: -T sample.llext.modules.builtin_build
      :compact:
 
 - The following commands build and run the sample so that the extension code is
@@ -50,14 +51,13 @@ Building and running
 
   .. zephyr-app-commands::
      :zephyr-app: samples/subsys/llext/modules
-     :board: qemu_xtensa/dc233c
+     :board: qemu_xtensa
      :goals: build run
      :west-args: -T sample.llext.modules.module_build
      :compact:
 
-  .. important::
-     Take a look at :zephyr_file:`samples/subsys/llext/modules/sample.yaml` for
-     the additional architecture-specific configurations required in this case.
+  Take a look at :zephyr_file:`samples/subsys/llext/modules/sample.yaml` for the
+  additional architecture-specific configurations required in this case.
 
 To build for a different board, replace ``qemu_xtensa`` in the commands above
 with the desired board name.

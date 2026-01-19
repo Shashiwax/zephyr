@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: bluetooth_eddystone
-   :name: Eddystone
-   :relevant-api: bluetooth
+.. _bluetooth-eddystone-sample:
 
-   Export an Eddystone Configuration Service as a Bluetooth LE GATT service.
+Bluetooth: Eddystone
+####################
 
 Overview
 ********
@@ -19,13 +18,13 @@ Requirements
 ************
 
 * BlueZ running on the host, or
-* A board with Bluetooth LE support
+* A board with BLE support
 
 Building and Running
 ********************
 This sample can be found under :zephyr_file:`samples/bluetooth/eddystone` in the
 Zephyr tree.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.
 
 .. _Eddystone Configuration Service: https://github.com/google/eddystone/tree/master/configuration-service

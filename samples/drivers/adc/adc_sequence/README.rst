@@ -31,7 +31,7 @@ Building and Running for Nordic nRF52840
 ========================================
 
 The sample can be built and executed for the
-:zephyr:board:`nrf52840dk` as follows:
+:ref:`nrf52840dk_nrf52840` as follows:
 
 .. zephyr-app-commands::
    :zephyr-app: samples/drivers/adc/adc_sequence

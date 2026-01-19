@@ -1,13 +1,12 @@
-.. zephyr:code-sample:: ble_periodic_adv_sync_rsp
-   :name: Periodic Advertising with Responses (PAwR) Synchronization
-   :relevant-api: bt_gap bluetooth
+.. _bluetooth-periodic-advertising-sync-rsp-sample:
 
-   Implement Bluetooth LE Periodic Advertising with Responses Synchronization.
+Bluetooth: Periodic Advertising with Responses (PAwR) Synchronization
+#####################################################################
 
 Overview
 ********
 
-A simple application demonstrating the Bluetooth LE Periodic Advertising with
+A simple application demonstrating the BLE Periodic Advertising with
 Responses Synchronization functionality.
 
 This sample will echo the data received in subevent indications back to the
@@ -25,7 +24,7 @@ advertiser concurrently.
 Requirements
 ************
 
-* A board with Bluetooth LE support
+* A board with BLE support
 * A controller that supports the Periodic Advertising with Responses (PAwR) - Scanner feature
 
 Building and Running
@@ -38,4 +37,4 @@ Use the sample found under :zephyr_file:`samples/bluetooth/periodic_adv_rsp` on
 another board that will start periodic advertising, which will connect to this
 sample and transfer the synchronization info.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

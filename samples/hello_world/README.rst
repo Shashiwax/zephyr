@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: hello_world
-   :name: Hello World
+.. _hello_world:
 
-   Print "Hello World" to the console.
+Hello World
+###########
 
 Overview
 ********

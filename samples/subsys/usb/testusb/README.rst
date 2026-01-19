@@ -1,6 +1,6 @@
 .. zephyr:code-sample:: testusb-app
-   :name: USB device testing application
-   :relevant-api: usbd_api
+   :name: USB testing application
+   :relevant-api: _usb_device_core_api
 
    Test USB device drivers using a loopback function.
 

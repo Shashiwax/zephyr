@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: co2
-   :name: Generic CO2 polling sample
-   :relevant-api: sensor_interface
+.. co2:
 
-   Get CO2 data from a sensor (polling mode).
+Generic CO2 polling sample
+##########################
 
 Overview
 ********

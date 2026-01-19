@@ -10,15 +10,11 @@ tests:
   sample.filesystem.shell:
     platform_allow:
       - reel_board
-      - mimxrt1060_evk/mimxrt1062/qspi
+      - mimxrt1060_evk
       - mr_canhubk3
       - native_sim
-      - s32z2xxdc2/s32z270/rtu0
-      - s32z2xxdc2/s32z270/rtu1
-      - s32z2xxdc2@D/s32z270/rtu0
-      - s32z2xxdc2@D/s32z270/rtu1
     integration_platforms:
-      - native_sim
+      - reel_board
   sample.filesystem.shell.fuse:
     platform_allow:
       - native_sim

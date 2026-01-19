@@ -1,5 +1,3 @@
-:orphan:
-
 .. _arc_secure_service:
 
 ARC Secure Service
@@ -70,7 +68,7 @@ Currently, in normal application, MPU is not accessible, so no user space and
 mpu-based stack checking. Please copy the specific dts file and def_config
 file to the specific board dir to build normal application.
 
-Here,take :zephyr:code-sample:`dining-philosophers` as an example for normal
+Here,take :ref:'dining-philosophers-sample' as an example for normal
 application.
 
 .. zephyr-app-commands::

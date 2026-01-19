@@ -21,10 +21,9 @@ To run this sample, build it for the desired board and scenario and flash it.
 
 The Flash scenario is supported on the nrf52dk/nrf52832 board.
 The RAM disk scenario is supported on the mimxrt1064_evk board.
-To build the RAM disk sample, the configuration :file:`prj_ram.conf` needs to be used by setting
-``CONF_FILE=prj_ram.conf``.
+To build the RAM disk sample, the configuration `prj_ram.conf` needs to be used by setting `CONF_FILE=prj_ram.conf`.
 
-The Flash sample for the nrf 52DK board can be built as follow:
+The Flash sample for the nrf 52DK board can be build as follow:
 
 .. zephyr-app-commands::
    :zephyr-app: samples/subsys/fs/format
@@ -32,7 +31,7 @@ The Flash sample for the nrf 52DK board can be built as follow:
    :goals: build flash
    :compact:
 
-The RAM disk sample for the MIMXRT1064-EVK board can be built as follow:
+The RAM disk sample for the MIMXRT1064-EVK board can be build as follow:
 
 .. zephyr-app-commands::
    :zephyr-app: samples/subsys/fs/format
@@ -45,7 +44,6 @@ Sample Output
 =============
 
 When the sample runs successfully you should see following message on the screen:
-
 .. code-block:: console
 
   I: LittleFS version 2.4, disk version 2.0

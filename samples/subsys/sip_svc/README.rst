@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: sip_svc
-   :name: Arm SiP Services on Intel Agilex SoC FPGA
+.. _sip_svc_sample:
 
-   Use the SiP SVC subsystem to interact with the Secure Device Manager on Intel Agilex SoC FPGA.
+SiP SVC sample
+##############
 
 Overview
 ********

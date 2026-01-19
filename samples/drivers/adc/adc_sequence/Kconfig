@@ -9,8 +9,4 @@ config SEQUENCE_RESOLUTION
 	int "Set the resolution of the sequence readings."
 	default 12
 
-config SEQUENCE_32BITS_REGISTERS
-	bool "ADC data sequences are on 32bits"
-	default n
-
 source "Kconfig.zephyr"

@@ -1,7 +1,7 @@
-.. zephyr:code-sample:: posix-eventfd
-   :name: eventfd()
+.. _posix-eventfd-sample:
 
-   Use ``eventfd()`` to create a file descriptor for event notification.
+POSIX eventfd()
+###############
 
 Overview
 ********

@@ -19,19 +19,9 @@
 
 int single_sector_test(const struct device *flash_dev)
 {
-#if CONFIG_DCACHE
-	const uint8_t expected[]__aligned(CONFIG_DCACHE_LINE_SIZE) = {
-#else
-	const uint8_t expected[] = {
-#endif
-					0x55, 0xaa, 0x66, 0x99};
+	const uint8_t expected[] = { 0x55, 0xaa, 0x66, 0x99 };
 	const size_t len = sizeof(expected);
-#if CONFIG_DCACHE
-	uint8_t buf[sizeof(expected)]__aligned(CONFIG_DCACHE_LINE_SIZE);
-#else
 	uint8_t buf[sizeof(expected)];
-#endif
-
 	int rc;
 
 	printf("\nPerform test on single sector");
@@ -91,18 +81,9 @@ int single_sector_test(const struct device *flash_dev)
 #if defined SPI_FLASH_MULTI_SECTOR_TEST
 int multi_sector_test(const struct device *flash_dev)
 {
-#if CONFIG_DCACHE
-	const uint8_t expected[]__aligned(CONFIG_DCACHE_LINE_SIZE) = {
-#else
-	const uint8_t expected[] = {
-#endif
-					0x55, 0xaa, 0x66, 0x99};
+	const uint8_t expected[] = { 0x55, 0xaa, 0x66, 0x99 };
 	const size_t len = sizeof(expected);
-#if CONFIG_DCACHE
-	uint8_t buf[sizeof(expected)]__aligned(CONFIG_DCACHE_LINE_SIZE);
-#else
 	uint8_t buf[sizeof(expected)];
-#endif
 	int rc;
 
 	printf("\nPerform test on multiple consequtive sectors");

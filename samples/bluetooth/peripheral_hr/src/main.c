@@ -37,19 +37,16 @@ static const struct bt_data sd[] = {
 };
 #endif /* !CONFIG_BT_EXT_ADV */
 
-enum {
-	STATE_CONNECTED,
-	STATE_DISCONNECTED,
+/* Use atomic variable, 2 bits for connection and disconnection state */
+static ATOMIC_DEFINE(state, 2U);
 
-	STATE_BITS,
-};
-
-static ATOMIC_DEFINE(state, STATE_BITS);
+#define STATE_CONNECTED    1U
+#define STATE_DISCONNECTED 2U
 
 static void connected(struct bt_conn *conn, uint8_t err)
 {
 	if (err) {
-		printk("Connection failed, err 0x%02x %s\n", err, bt_hci_err_to_str(err));
+		printk("Connection failed (err 0x%02x)\n", err);
 	} else {
 		printk("Connected\n");
 
@@ -59,7 +56,7 @@ static void connected(struct bt_conn *conn, uint8_t err)
 
 static void disconnected(struct bt_conn *conn, uint8_t reason)
 {
-	printk("Disconnected, reason 0x%02x %s\n", reason, bt_hci_err_to_str(reason));
+	printk("Disconnected (reason 0x%02x)\n", reason);
 
 	(void)atomic_set_bit(state, STATE_DISCONNECTED);
 }
@@ -126,7 +123,7 @@ static void hrs_notify(void)
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
 
-#if DT_NODE_HAS_STATUS_OKAY(LED0_NODE)
+#if DT_NODE_HAS_STATUS(LED0_NODE, okay)
 #include <zephyr/drivers/gpio.h>
 #define HAS_LED     1
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
@@ -207,7 +204,7 @@ int main(void)
 
 #if !defined(CONFIG_BT_EXT_ADV)
 	printk("Starting Legacy Advertising (connectable and scannable)\n");
-	err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_1, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+	err = bt_le_adv_start(BT_LE_ADV_CONN_ONE_TIME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
 	if (err) {
 		printk("Advertising failed to start (err %d)\n", err);
 		return 0;
@@ -218,7 +215,9 @@ int main(void)
 		.id = BT_ID_DEFAULT,
 		.sid = 0U,
 		.secondary_max_skip = 0U,
-		.options = (BT_LE_ADV_OPT_EXT_ADV | BT_LE_ADV_OPT_CONN | BT_LE_ADV_OPT_CODED),
+		.options = (BT_LE_ADV_OPT_EXT_ADV |
+			    BT_LE_ADV_OPT_CONNECTABLE |
+			    BT_LE_ADV_OPT_CODED),
 		.interval_min = BT_GAP_ADV_FAST_INT_MIN_2,
 		.interval_max = BT_GAP_ADV_FAST_INT_MAX_2,
 		.peer = NULL,
@@ -284,7 +283,7 @@ int main(void)
 		} else if (atomic_test_and_clear_bit(state, STATE_DISCONNECTED)) {
 #if !defined(CONFIG_BT_EXT_ADV)
 			printk("Starting Legacy Advertising (connectable and scannable)\n");
-			err = bt_le_adv_start(BT_LE_ADV_CONN_FAST_1, ad, ARRAY_SIZE(ad), sd,
+			err = bt_le_adv_start(BT_LE_ADV_CONN_ONE_TIME, ad, ARRAY_SIZE(ad), sd,
 					      ARRAY_SIZE(sd));
 			if (err) {
 				printk("Advertising failed to start (err %d)\n", err);

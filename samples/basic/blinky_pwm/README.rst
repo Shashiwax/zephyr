@@ -41,29 +41,29 @@ In these other cases, however, manual wiring is necessary:
 
    * - Board
      - Wiring
-   * - :zephyr:board:`nucleo_f401re`
+   * - :ref:`nucleo_f401re_board`
      - connect PWM2 (PA0) to an LED
-   * - :zephyr:board:`nucleo_l476rg`
+   * - :ref:`nucleo_l476rg_board`
      - connect PWM2 (PA0) to an LED
-   * - :zephyr:board:`stm32f4_disco`
+   * - :ref:`stm32f4_disco_board`
      - connect PWM2 (PA0) to an LED
-   * - :zephyr:board:`nucleo_f302r8`
+   * - :ref:`nucleo_f302r8_board`
      - connect PWM2 (PA0) to an LED
-   * - :zephyr:board:`nucleo_f103rb`
+   * - :ref:`nucleo_f103rb_board`
      - connect PWM1 (PA8) to an LED
-   * - :zephyr:board:`nucleo_wb55rg`
+   * - :ref:`nucleo_wb55rg_board`
      - connect PWM1 (PA8) to an LED
-   * - :zephyr:board:`esp32_devkitc`
+   * - :ref:`esp32_devkitc_wroom`
      - connect GPIO2 to an LED
-   * - :zephyr:board:`esp32s2_saola`
+   * - :ref:`esp32s2_saola`
      - connect GPIO2 to an LED
-   * - :zephyr:board:`esp32c3_devkitm`
+   * - :ref:`esp32c3_devkitm`
      - connect GPIO2 to an LED
 
 Building and Running
 ********************
 
-To build and flash this sample for the :zephyr:board:`nrf52840dk`:
+To build and flash this sample for the :ref:`nrf52840dk_nrf52840`:
 
 .. zephyr-app-commands::
    :zephyr-app: samples/basic/blinky_pwm

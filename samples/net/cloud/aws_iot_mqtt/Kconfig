@@ -81,5 +81,4 @@ config AWS_EXPONENTIAL_BACKOFF
 
 endmenu
 
-source "samples/net/common/Kconfig"
 source "Kconfig.zephyr"

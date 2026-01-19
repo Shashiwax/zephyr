@@ -1,9 +1,7 @@
-.. zephyr:code-sample:: mpu6050
-   :name: MPU6050 motion tracking device
-   :relevant-api: sensor_interface
+.. _mpu6050:
 
-   Get temperature, acceleration, and angular velocity from an MPU6050 sensor (polling & trigger
-   mode).
+MPU6050: Invensense Motion Tracking Device
+##########################################
 
 Description
 ***********
@@ -12,8 +10,8 @@ This sample application periodically (0.5 Hz) measures the sensor
 temperature, acceleration, and angular velocity, displaying the values
 on the console along with a timestamp since startup.
 
-When triggered mode is enabled the measurements are displayed at a rate
-of 32Hz governed by the sensor's internal clock and divider.
+When triggered mode is enabled the measurements are displayed at the
+rate they are produced by the sensor.
 
 Wiring
 *******

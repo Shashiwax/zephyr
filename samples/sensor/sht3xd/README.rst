@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: sht3xd
-   :name: SHT3XD humidity sensor
-   :relevant-api: sensor_interface
+.. _sht3xd:
 
-   Get temperature and humidity from a SHT3XD sensor (polling & trigger mode).
+SHT3XD: High accuracy digital I2C humidity sensor
+#################################################
 
 Description
 ***********
@@ -32,7 +31,7 @@ Building and Running
 This project outputs sensor data to the console. It requires a SHT3XD
 sensor. It should work with any platform featuring a I2C peripheral
 interface.  It does not work on QEMU.  In this example below the
-:zephyr:board:`nrf51_ble400` board is used.
+:ref:`nrf51_ble400` board is used.
 
 
 .. zephyr-app-commands::

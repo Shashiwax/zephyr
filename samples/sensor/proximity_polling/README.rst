@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: proximity_polling
-   :name: Proximity sensor
-   :relevant-api: sensor_interface
+.. _tmd2620:
 
-   Get proximity data from up to 10 proximity sensors (polling mode).
+Generic Proximity Sensor Sample
+###############################
 
 Overview
 ********

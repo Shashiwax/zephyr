@@ -1,8 +1,7 @@
-.. zephyr:code-sample:: bluetooth_hap_ha
-   :name: Hearing Access Profile (HAP) Hearing Aid (HA)
-   :relevant-api: bt_has
+.. _bluetooth_hap_ha:
 
-   Advertise and await connection from a Hearing Aid Unicast Client or Remote Controller.
+Bluetooth: HAP Hearing Aid (HA)
+###############################
 
 Overview
 ********
@@ -22,4 +21,4 @@ Building and Running
 This sample can be found under
 :zephyr_file:`samples/bluetooth/hap_ha` in the Zephyr tree.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

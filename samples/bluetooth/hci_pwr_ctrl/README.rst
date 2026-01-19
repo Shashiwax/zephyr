@@ -1,14 +1,13 @@
-.. zephyr:code-sample:: bluetooth_hci_pwr_ctrl
-   :name: HCI Power Control
-   :relevant-api: bt_hrs bluetooth
+.. _bluetooth-hci-pwr-ctrl-sample:
 
-   Dynamically control the Tx power of a Bluetooth LE Controller using HCI vendor-specific commands.
+Bluetooth: HCI Power Control
+############################
 
 Overview
 ********
 
 This sample application demonstrates the dynamic Tx power control over the LL
-of the Bluetooth LE controller via Zephyr HCI VS commands. The application implements a
+of the BLE controller via Zephyr HCI VS commands. The application implements a
 peripheral advertising with varying Tx power. The initial advertiser TX power
 for the first 5s of the application is the Kconfig set default TX power. Then,
 the TX power variation of the advertiser is a repeatedly descending staircase
@@ -25,7 +24,7 @@ Requirements
 ************
 
 * BlueZ running on the host, or
-* A board with Bluetooth LE support
+* A board with BLE support
 * A central device & monitor (e.g. nRF Connect) to check the RSSI values
   obtained from the peripheral.
 
@@ -35,4 +34,4 @@ Building and Running
 This sample can be found under :zephyr_file:`samples/bluetooth/hci_pwr_ctrl`
 in the Zephyr tree.
 
-See :zephyr:code-sample-category:`bluetooth` samples for details.
+See :ref:`bluetooth samples section <bluetooth-samples>` for details.

@@ -1,0 +1,79 @@
+/* boards/stm32f746g_disco.overlay */
+
+#include <zephyr/dt-bindings/pinctrl/stm32-pinctrl.h>
+#include <zephyr/dt-bindings/dma/stm32_dma.h>
+#include <zephyr/dt-bindings/clock/stm32f7_clock.h>
+
+/ {
+    aliases {
+        /* Alias points to the CHILD node */
+        i2s-tx = &sai2;
+    };
+
+    /* Use path-based reference to avoid "undefined label" errors */
+    soc {
+        /* Manually define SAI2 with ABSOLUTE addressing */
+        sai2: sai@40015c00 {
+            compatible = "st,stm32-sai";
+            reg = <0x40015c00 0x400>;
+            interrupts = <91 0>;
+            
+            /* [FIX 1] Enable Parent Clock (Bit 23 = SAI2) */
+            clocks = <&rcc STM32_CLOCK_BUS_APB2 0x00800000>;
+            
+            status = "okay";
+
+            /* [FIX 2] Use absolute addressing schema */
+            #address-cells = <1>;
+            #size-cells = <1>;
+
+            pinctrl-0 = <&sai2a_mck_pi4 &sai2a_sck_pi5 &sai2a_sd_a_pi6 &sai2a_fs_a_pi7>;
+            pinctrl-names = "default";
+            
+            /* [FIX 3] Child Node with Absolute Address */
+            sai2_a: audio-controller@40015c04 {
+                compatible = "st,stm32-sai-sub-block";
+                /* 0x40015c00 + 0x04 offset = 0x40015c04 */
+                reg = <0x40015c04 0x20>; 
+                status = "okay";
+
+                /* Re-add clocks to child to be safe */
+                clocks = <&rcc STM32_CLOCK_BUS_APB2 0x00800000>;
+
+                dmas = <&dma2 4 3 STM32_DMA_PERIPH_TX STM32_DMA_FIFO_FULL>;
+                dma-names = "tx";
+            };
+        };
+    };
+};
+
+/* These labels usually exist globally, but if they fail, we can move them too */
+&dma2 {
+    status = "okay";
+};
+
+&pinctrl {
+    sai2a_mck_pi4: sai2a_mck_pi4 {
+        pinmux = <STM32_PINMUX('I', 4, AF10)>;
+        bias-disable;
+        drive-push-pull;
+    };
+
+    sai2a_sck_pi5: sai2a_sck_pi5 {
+        pinmux = <STM32_PINMUX('I', 5, AF10)>;
+        bias-disable;
+        drive-push-pull;
+    };
+
+    sai2a_sd_a_pi6: sai2a_sd_a_pi6 {
+        pinmux = <STM32_PINMUX('I', 6, AF10)>;
+        bias-disable;
+        drive-push-pull;
+    };
+
+    sai2a_fs_a_pi7: sai2a_fs_a_pi7 {
+        pinmux = <STM32_PINMUX('I', 7, AF10)>;
+        bias-disable;
+        drive-push-pull;
+    };
+};

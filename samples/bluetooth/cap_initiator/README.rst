@@ -1,19 +1,18 @@
 .. zephyr:code-sample:: bluetooth_cap_initiator
-   :name: Common Audio Profile (CAP) Initiator
-   :relevant-api: bluetooth bt_bap bt_cap bt_conn
+   :name: Bluetooth: Common Audio Profile Initiator
+   :relevant-api: bt_cap bt_bap bluetooth
 
-   Connect to CAP Acceptors and setup unicast audio streaming or broadcast audio streams.
+   CAP Initiator sample that connects to CAP Acceptors and setup audio streaming.
 
 Overview
 ********
 
 Application demonstrating the CAP Initiator functionality.
-Starts by either scanning for a CAP Acceptor and then connects to and sets up available unicast
-audio streams, sets up a broadcast audio stream, or both.
+Starts by scanning for a CAP Acceptor and then connects to and sets up available streams.
 
 This sample can be found under :zephyr_file:`samples/bluetooth/cap_initiator` in the Zephyr tree.
 
-Check the :zephyr:code-sample-category:`bluetooth` samples for general information.
+Check the :ref:`bluetooth samples section <bluetooth-samples>` for general information.
 
 Requirements
 ************
@@ -25,7 +24,7 @@ Building and Running
 ********************
 
 When building targeting an nrf52 series board with the Zephyr Bluetooth Controller,
-use ``-DEXTRA_CONF_FILE=overlay-bt_ll_sw_split.conf`` to enable the required ISO
+use ``-DOVERLAY_CONFIG=overlay-bt_ll_sw_split.conf`` to enable the required ISO
 feature support.
 
 Building for an nrf5340dk
@@ -48,7 +47,7 @@ If you prefer to only build the application core image, you can do so by doing i
    :goals: build
 
 In that case you can pair this application core image with the
-:zephyr:code-sample:`bluetooth_hci_ipc` sample
+:ref:`hci_ipc sample <bluetooth-hci-ipc-sample>`
 :zephyr_file:`samples/bluetooth/hci_ipc/nrf5340_cpunet_iso-bt_ll_sw_split.conf` configuration.
 
 Building for a simulated nrf5340bsim
@@ -62,7 +61,7 @@ Similarly to how you would for real HW, you can do:
    :goals: build
    :west-args: --sysbuild
 
-Note this will produce a Linux executable in :file:`./build/zephyr/zephyr.exe`.
+Note this will produce a Linux executable in `./build/zephyr/zephyr.exe`.
 For more information, check :ref:`this board documentation <nrf5340bsim>`.
 
 Building for a simulated nrf52_bsim
@@ -72,4 +71,4 @@ Building for a simulated nrf52_bsim
    :zephyr-app: samples/bluetooth/cap_initiator/
    :board: nrf52_bsim
    :goals: build
-   :gen-args: -DEXTRA_CONF_FILE=overlay-bt_ll_sw_split.conf
+   :gen-args: -DOVERLAY_CONFIG=overlay-bt_ll_sw_split.conf

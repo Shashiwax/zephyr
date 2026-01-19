@@ -1,26 +1,28 @@
-.. zephyr:code-sample:: cmsis-dap
-   :name: CMSIS-DAP
+.. _dap-sample:
 
-   Implement a custom CMSIS-DAP controller using SWDP interface driver.
+DAP Sample Application
+######################
 
 Overview
 ********
 
 This sample app demonstrates use of a SWDP interface driver and CMSIS DAP
-controller through DAP USB backend.
+controller through USB Bulk interface.
 
 Requirements
 ************
 
 This sample supports multiple hardware configurations:
 
-The simplest configuration would be to connect ``SWDIO`` to ``dio``, ``SWDCLK`` to ``clk``
-and optionally ``nRESET`` to ``reset``.  The optional ``noe`` pin is used to enable the port,
+The simplest configuration would be to connect `SWDIO` to `dio`, `SWDCLK` to `clk`
+and optionally `nRESET` to `reset`.  The optional `noe` pin is used to enable the port,
 e.g. if the SWD connections are multiplexed.
 
 Building and Running
 ********************
 
+In order for our debug adapter to be recognized by pyOCD we need to change
+Zephyr's VID/PID to IDs known to pyOCD, this is up to the user.
 The following commands build and flash DAP sample.
 
 .. zephyr-app-commands::

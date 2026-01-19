@@ -1,0 +1,11 @@
+# Private config options for charger sample app
+
+# Copyright (c) 2024 Cirrus Logic, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "Audio application"
+
+menuconfig EPSON_S1V3G340 
+    bool "Epson S1V3G340 Driver"
+
+source "Kconfig.zephyr"

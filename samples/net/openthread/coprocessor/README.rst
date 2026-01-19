@@ -1,4 +1,4 @@
-.. zephyr:code-sample:: openthread-coprocessor
+.. zephyr:code-sample:: coprocessor
    :name: OpenThread co-processor
    :relevant-api: openthread
 
